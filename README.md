@@ -41,8 +41,9 @@
 
 2\. 開發者可直接使用 `wota-translater.py`並更改參數進行微調
 
+====================
 
-Excel 格式(tracklist.xlsx)
+\## 📄Excel 格式(tracklist.xlsx)
 
 A(歌名)　B (開頭進入)　C (開頭退出)　D (第一段進入)　E (第一段退出)　F(第x段進入)……
 
@@ -111,6 +112,7 @@ songs/ 中未被使用之檔案
 
 
 最後進行 Peak 正規化 −1 dBFS。
+
 
 
 
