@@ -44,44 +44,50 @@
 2\. 或者開發者可直接使用 `wota-translater.py`
 
 
+Excel 格式(tracklist.xlsx)
+
+A(歌名)B (開頭進入)C (開頭退出)D (第一段進入)E (第一段退出)F(第x段進入)……
+歌名   mm:ss       mm:ss       mm:ss         mm:ss         mm:ss        
+
+必填：
+歌名(A)
+
+可選：
+開頭進入(B，選填)、開頭退出(C)
+第一段進入(D)、第一段退出(E)
+第X段進入、第X段退出（GHIJK……可無限擴充，[X]支援中文或阿拉伯數字）
+
+
+
 
 \## 📑輸出內容
 
 
 
-output/\*.mp3
-
+`output/\*.mp3`
 副歌成品
 
 
-
-duplicate\_titles.txt
-
+`duplicate\_titles.txt`
 重複歌名
 
-duplicate\_matches.txt
-
+`duplicate\_matches.txt`
 音檔被多歌名配對
 
-invalid\_time.txt
-
+`invalid\_time.txt`
 時間格式 / 邏輯錯誤
 
-processing\_errors.txt
-
+`processing\_errors.txt`
 音檔讀取 / 輸出異常
 
-unmatched\_titles.txt
-
+`unmatched\_titles.txt`
 歌名找不到音檔
 
-unmatched\_audio.txt
-
-songs/ 中未被使用之檔案
-
+`unmatched\_audio.txt`
+`songs/` 中未被使用之檔案
 
 
-剪輯後的音檔會存放在 output/，格式為 320 kbps MP3。
+剪輯後的音檔會存放在 `output/`，格式為 320 kbps MP3。
 
 
 
