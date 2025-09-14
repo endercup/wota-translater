@@ -24,7 +24,7 @@
 
 \## 📦 安裝與使用
 
-1\. 直接下載 \*\*Release\*\* 的 `wota-translater.exe`（免安裝 Python）
+1\. 直接下載 \*\*Release\*\* 的 `WIN/MAC(開發中)`（免安裝 Python）
 
 &nbsp;	
 	--在跟主程式資料夾下建立 songs資料夾 與 tracklist.xlsx。
@@ -112,6 +112,7 @@ songs/ 中未被使用之檔案
 
 
 最後進行 Peak 正規化 −1 dBFS。
+
 
 
 
