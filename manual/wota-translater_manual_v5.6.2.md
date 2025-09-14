@@ -1,4 +1,4 @@
-# **🎵 wota‑translater v5.6.3**
+# **🎵 wota‑translater v5.6.2**
 
 *— 快速剪輯 **御宅藝** 用副歌檔案*
 
@@ -51,7 +51,7 @@
 
 `Python套件需要: colorama tqdm pydub pandas openpyxl`
 
-`需安裝 FFmpeg 並加入 PATH`
+`需安裝 FFmpeg 並加入 PATH (打包時可進階打包打包時可進階打包)`
 
 ---
 
@@ -85,7 +85,7 @@
 
 ## **4. Excel 格式(tracklist.xlsx)**
 
-| A(歌名) | B (開頭進入) | C (開頭退出) | D (第一段進入) | E (第一段退出) | F(第二段進入)  | …… |
+| A(歌名) | B (開頭進入) | C (開頭退出) | D (第一段進入) | E (第一段退出) | F(第x段進入)  | …… |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
 | 歌名 | mm:ss | mm:ss | mm:ss | mm:ss | mm:ss |  |
 
@@ -248,7 +248,33 @@
 
 `# 保留主控台則把 "--noconsole" 刪除`
 
-其中 `icon.ico` 可換成音符圖示。
+其中 `icon.ico` 可換成任意 `.ico` 圖示。
+
+進階打包(打包成單一檔案，不必額外安裝套件和 `FFmpeg`，單exe啟動):
+
+從 [https://www.gyan.dev/ffmpeg/builds/](https://www.gyan.dev/ffmpeg/builds/) 下載 full-release 
+
+從中抽取出 /bin/ffmpeg.exe以及/bin/ffprobe.exe 放在主py程式資料夾
+
+接著py腳本內在from pydub import AudioSegment 下方加入以下程式碼
+
+`if getattr(sys, 'frozen', False):`
+
+    `# EXE 模式下`
+
+    `base_dir = sys._MEIPASS`
+
+`else:`
+
+    `# Python 腳本模式`
+
+    `base_dir = os.path.dirname(os.path.abspath(__file__))`
+
+`AudioSegment.converter = os.path.join(base_dir, "ffmpeg.exe")`
+
+`AudioSegment.ffprobe = os.path.join(base_dir, "ffprobe.exe")`
+
+pyinstaller的命令改成 `pyinstaller --onefile --add-binary "ffmpeg.exe;." --add-binary "ffprobe.exe;." --icon=wota.ico wota-translater-v5.6.2.py`
 
 ---
 
@@ -266,8 +292,8 @@
 
 | 版本 | 重點 |
 | ----- | ----- |
-| 5.6.3 | 靜默化python套件安裝 |
-| 5.6.2 | 正式化功能，使其具有更加通用的剪輯功能 |
+| 5.6.2 | 靜默化python套件安裝 |
+| 5.6.1 | 正式化功能，使其具有更加通用的剪輯功能 |
 | 5.5.7 | 修正報錯提示、簡介輸出 |
 | 5.5.0 | 新增 Peak 正規化 –1 dBFS |
 | 5.4.3 | 0:00 例外 & 單數字秒數 |
