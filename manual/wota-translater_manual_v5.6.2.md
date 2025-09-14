@@ -259,15 +259,10 @@
 接著py腳本內在from pydub import AudioSegment 下方加入以下程式碼
 
 if getattr(sys, 'frozen', False):
-
     # EXE 模式下
-
     base_dir = sys._MEIPASS
-
 else:
-
     # Python 腳本模式
-
     base_dir = os.path.dirname(os.path.abspath(__file__))
 
 AudioSegment.converter = os.path.join(base_dir, "ffmpeg.exe")
