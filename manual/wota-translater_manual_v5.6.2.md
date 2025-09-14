@@ -189,41 +189,41 @@
 
 **程式片段：**
 
-`# ① 開頭片段（intro）`
+# ① 開頭片段（intro）
 
 `intro_seg = a[:intro_len_ms].fade_out(2000)      # ← 這個 2000 = Intro 淡出長度`
 
-`# ② 副歌段`
+# ② 副歌段
 
 `seg = a[start_ms:end_ms]                         # 切出副歌`
 
 `seg = seg.fade_in(min(2000, end_ms-start_ms))    # ← 2000 = 副歌淡入長度`
 
-`# ③ 結尾淡出`
+# ③ 結尾淡出
 
 `if len(seg) > 1000:                              # 距離退出點 1 秒`
 
     `seg = seg[:-1000].fade_out(min(2000, len(seg)))  # ← 2000 = 結尾淡出長度`
 
-`# ④ Peak 正規化到 –1 dBFS (v5.5.0 新增)`
+# ④ Peak 正規化到 –1 dBFS (v5.5.0 新增)
 
 `gain = -1.0 - result.max_dBFS   # result 為 intro_seg + seg`
 
 `result = result.apply_gain(gain)`
 
-`# ⑤ 自訂輸入資料夾名稱`
+# ⑤ 自訂輸入資料夾名稱
 
 `INPUT_FOLDER = "songs"`
 
-`# ⑥ 自訂輸出資料夾名稱`
+# ⑥ 自訂輸出資料夾名稱
 
 `OUTPUT_FOLDER = "output"`
 
-`# ⑦ 自訂歌曲資料表格名稱`
+# ⑦ 自訂歌曲資料表格名稱
 
 `TRACKLIST = "tracklist.xlsx"`
 
-`# ⑧ 搜尋歌名時的模糊比對嚴格程度(若希望更模糊則減少，最嚴格為1)`
+# ⑧ 搜尋歌名時的模糊比對嚴格程度(若希望更模糊則減少，最嚴格為1)
 
 `FUZZY_TH = 0.4`
 
@@ -258,23 +258,23 @@
 
 接著py腳本內在from pydub import AudioSegment 下方加入以下程式碼
 
-`if getattr(sys, 'frozen', False):`
+if getattr(sys, 'frozen', False):
 
-    `# EXE 模式下`
+    # EXE 模式下
 
-    `base_dir = sys._MEIPASS`
+    base_dir = sys._MEIPASS
 
-`else:`
+else:
 
-    `# Python 腳本模式`
+    # Python 腳本模式
 
-    `base_dir = os.path.dirname(os.path.abspath(__file__))`
+    base_dir = os.path.dirname(os.path.abspath(__file__))
 
-`AudioSegment.converter = os.path.join(base_dir, "ffmpeg.exe")`
+AudioSegment.converter = os.path.join(base_dir, "ffmpeg.exe")
 
-`AudioSegment.ffprobe = os.path.join(base_dir, "ffprobe.exe")`
+AudioSegment.ffprobe = os.path.join(base_dir, "ffprobe.exe")
 
-pyinstaller的命令改成 `pyinstaller --onefile --add-binary "ffmpeg.exe;." --add-binary "ffprobe.exe;." --icon=wota.ico wota-translater-v5.6.2.py`
+pyinstaller的命令改成 pyinstaller --onefile --add-binary "ffmpeg.exe;." --add-binary "ffprobe.exe;." --icon=wota.ico wota-translater-v5.6.2.py
 
 ---
 
