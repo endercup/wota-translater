@@ -47,7 +47,6 @@
 Excel 格式(tracklist.xlsx)
 
 A(歌名)B (開頭進入)C (開頭退出)D (第一段進入)E (第一段退出)F(第x段進入)……
-
 歌名   mm:ss       mm:ss       mm:ss         mm:ss         mm:ss        
 
 必填：
@@ -111,6 +110,7 @@ A(歌名)B (開頭進入)C (開頭退出)D (第一段進入)E (第一段退出)F
 
 
 最後進行 Peak 正規化 −1 dBFS。
+
 
 
 
